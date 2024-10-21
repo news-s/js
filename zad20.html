@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <script>
+        let ax = prompt("X dla A: ")
+        let ay = prompt("y dla A: ")
+        let bx = prompt("X dla b: ")
+        let by = prompt("y dla b: ")
+        let cx = prompt("X dla c: ")
+        let cy = prompt("y dla c: ")
+        
+        function AB(ax,ay, bx, by){
+            let x = Math.abs(ax - bx)
+            let y = Math.abs(ay - by)
+
+            document.write(Math.hypot(x, y))
+        }
+        function BC(bx,by,cx,cy){
+            let x = Math.abs(bx - cx)
+            let y = Math.abs(by - cy)
+            
+            document.write(Math.hypot(x, y))
+        }
+        function AC(ax,ay,cx,cy){
+            let x = Math.abs(ax - cx)
+            let y = Math.abs(ay - cy)
+
+            document.write(Math.hypot(x, y))
+        }
+
+        AB(ax, ay, bx, by)
+        document.write("<br>")
+        BC(bx, by, cx, cy)
+        document.write("<br>")
+        AC(ax, ay, cx, cy)
+        
+    </script>
+    
+  </body>
+</html>
