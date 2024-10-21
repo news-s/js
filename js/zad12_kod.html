@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <title>
+            Zadanie 12 - kod
+        </title>
+    </head>
+    <body>
+        <h1>
+            HTML/JS (inline)
+        </h1>
+        <textarea name="" id="" rows="30" cols="100">
+            <!DOCTYPE html>
+            <html>
+                <head>
+                    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+                    <title>Obliczenia</title>
+                </head>
+                <body>
+                    <div style="font-size: 34px; color: green;">
+                        <script>
+                            const day1 = prompt("Podaj 1 dzień: ", "");
+                            const hour1 = prompt("Podaj 1 godzine: ", "");
+                            const day2 = prompt("Podaj 2 dzień: ", "");
+                            const hour2 = prompt("Podaj 2 godzine: ", "");
+                            const diff = (+day1 * 86400 + +hour1 * 3600) - (+day2 * 86400 + +hour2 * 3600);
+            
+                            document.write(`Ilość różnicy sekund wynosi: ${diff} <br />`);
+                        </script>
+                    </div>
+                </body>
+            </html>
+        </textarea>
+    </body>
+</html>

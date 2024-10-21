@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+            body {
+                color: blue;
+                font-size: 32px;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <script>
+            const a = +prompt("Podaj a: ");
+            const b = +prompt("Podaj b:" );
+
+            const num2 = 3 * (Math.pow(a, 2) * b);
+            const num3 = 3 * (a * Math.pow(b, 2));
+            const num1 = Math.pow(a, 3);
+            const num4 = Math.pow(b, 3);
+
+            document.write(
+                `(${a}   +  ${b})^3= ${a}^3   +   3*((${a})^2)*(${b})  +  3*(${a})*((${b})^2)  +  ${b}^3  =   ${num1}  +  ${num2}  +  ${num3}   +   ${num4}   =   ${num1 + num2 + num3 + num4}`
+            );
+        </script>
+    </body>
+</html>

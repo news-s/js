@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obliczanie ilości atomów pierwiastka promieniotwórczego</title>
+<body>
+    <div class="container">
+        <h1>Obliczanie ilości atomów pierwiastka promieniotwórczego</h1>
+        <label for="no">Początkowa ilość atomów (No):</label>
+        <input type="number" id="no" step="any">
+        
+        <label for="t">Czas (t) w latach:</label>
+        <input type="number" id="t" step="any">
+        
+        <label for="t12">Czas połowicznego rozpadu (T1/2) w latach:</label>
+        <input type="number" id="t12" step="any">
+        
+        <button onclick="calculate()">Oblicz</button>
+        
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculate() {
+            const No = parseFloat(document.getElementById('no').value);
+            const t = parseFloat(document.getElementById('t').value);
+            const T12 = parseFloat(document.getElementById('t12').value);
+
+            const lambda = Math.log(2) / T12;
+
+            const N = No * Math.pow(Math.E, -lambda * t);
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <p>Początkowa ilość atomów (No): ${No.toFixed(2)} sztuk</p>
+                <p>Czas (t): ${t.toFixed(2)} lat</p>
+                <p>Czas połowicznego rozpadu (T1/2): ${T12.toFixed(2)} lat</p>
+                <p>Stała rozpadu promieniotwórczego (λ): ${lambda.toFixed(7)} 1/rok</p>
+                <p>Ilość atomów po czasie t (N): ${N.toFixed(2)} sztuk</p>
+            `;
+        }
+    </script>
+</body>
+</html>

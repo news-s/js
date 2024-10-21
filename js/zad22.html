@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Obliczanie pola i obwodu prostokąta</title>
+  </head>
+  <body>
+    <label for="a_dana">A:</label>
+    <input type="number" id="a_dana" name="a_dana" />
+    <label for="b_dana">B:</label>
+    <input type="number" id="b_dana" name="b_dana" />
+    <button onclick="calculate()">Oblicz</button>
+
+    <h3>Wyniki:</h3>
+    <p><strong>Pole:</strong> <span id="wyprowadz_pole"></span></p>
+    <p><strong>Obwód:</strong> <span id="wyprowadz_obwod"></span></p>
+
+    <script>
+      function Pole(a, b) {
+        return a * b;
+      }
+
+      function obwod(a, b) {
+        return 2 * (a + b);
+      }
+
+      function calculate() {
+        const a = parseFloat(document.getElementById("a_dana").value);
+        const b = parseFloat(document.getElementById("b_dana").value);
+
+        if (isNaN(a) || isNaN(b)) {
+          alert("Proszę wprowadzić prawidłowe liczby");
+          return;
+        }
+
+        const pole = Pole(a, b);
+        const obwod = obwod(a, b);
+
+        document.getElementById("wyprowadz_pole").textContent = pole;
+        document.getElementById("wyprowadz_obwod").textContent = obwod;
+      }
+    </script>
+  </body>
+</html>
