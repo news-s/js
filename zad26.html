@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Obliczanie pola i obwodu trapezu równoramiennego</title>
+    <script>
+        function Pow(a, b, h) {
+            return ((Math.abs(a) + Math.abs(b)) * h) / 2;
+        }
+ 
+        function Obw(a, b, h) {
+            let ramię = Math.sqrt(Math.pow((Math.abs(a) - Math.abs(b)) / 2, 2) + Math.pow(h, 2));
+            return Math.abs(a) + Math.abs(b) + 2 * ramię;
+        }
+ 
+        function oblicz() {
+            let a = parseFloat(document.getElementById('a').value);
+            let b = parseFloat(document.getElementById('b').value);
+            let h = parseFloat(document.getElementById('h').value);
+ 
+            let pole = Pow(a, b, h);
+            let obwód = Obw(a, b, h);
+ 
+            document.write("Pole trapezu: " + pole + "<br>");
+            document.write("Obwód trapezu: " + obwód + "<br>");
+        }
+    </script>
+</head>
+<body>
+    <h1>Obliczanie pola i obwodu trapezu równoramiennego</h1>
+    <form>
+        <label for="a">Długość górnej podstawy (a):</label>
+        <input type="number" id="a" name="a"><br><br>
+        <label for="b">Długość dolnej podstawy (b):</label>
+        <input type="number" id="b" name="b"><br><br>
+        <label for="h">Wysokość (h):</label>
+        <input type="number" id="h" name="h"><br><br>
+        <input type="button" value="Oblicz" onclick="oblicz()">
+    </form>
+</body>
+</html>
