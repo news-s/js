@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kod - zadanie 32</title>
+</head>
+<body>
+    <textarea style="width: 400px; height:850px;">
+        <html>
+
+<head>
+    <script type="text/javascript">               
+        function komp(procc_k, k_graf_k, typ_chlodzenia_k)
+        {    
+            this.procc=procc_k;    
+            this.k_graf=k_graf_k;    
+            this.typ_chlodzenia=typ_chlodzenia_k;     
+        }
+
+        komp.prototype.wypisz = function ()   
+        {          
+            alert(this.procc + ' ' + this.k_graf+ ' ' + this.typ_chlodzenia);       
+        };   
+        
+        var komp1 = new komp("i5", "mx210", "wodne");  
+        var komp2 = new komp('i7', 'rtx4070', 'pasywne');   
+        komp1.wypisz(); 
+        komp2.wypisz();                 
+        document.write("dostęp do właściwości"+"<br>"); 
+        document.write("komp pierwszy"+"   "+komp1.procc+"   "+komp1.k_graf+"   "+komp1.typ_chlodzenia);             
+    </script>
+</head>
+
+<body></body>
+
+</html>
+    </textarea>
+</body>
+</html>
