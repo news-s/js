@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function komputer(kolor, rozmiar, model, proc) {
+            this.marka = "asus";
+            this.rozmiar = rozmiar;
+            this.model = model;
+            this.proc = proc;
+        };
+
+        komputer.prototype.komputer_wyswietl_woh = function () {
+            document.write(`Marka samochodu: ${this.marka}`)
+        };
+
+        komputer.prototype.procesor = function () {
+            document.write(`procesor: ${this.proc}`)
+        };
+
+        const mojkomputer = new komputer("asus", 40, "x86", "i5");
+        mojkomputer.komputer_wyswietl_woh();
+        mojkomputer.procesor();
+    </script>
+</body>
+</html>

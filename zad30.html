@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function komputer(kolor, rozmiar, model) {
+            this.marka = "asus";
+            this.rozmiar = rozmiar;
+            this.model = model;
+        };
+
+        komputer.prototype.komputer_wyswietl_woh = function () {
+            document.write(`Marka samochodu: ${this.marka}`)
+        };
+
+        const mojkomputer = new komputer("asus", 40, "x86");
+        mojkomputer.komputer_wyswietl_woh();
+    </script>
+</body>
+</html>
