@@ -1,0 +1,16 @@
+Uwagi wstêpne:
+1)Wszystkie zmienne z trzema literami pierwszymi nazwiska, unikaj zapisow +-
+2)Wypisuj czcionka 2 cm, kolorem zielonym.
+
+Zadanie
+Czytaæ trzy liczby w okienka formularza a, b, c. S¹ to wspó³czynniki funkcji kwadratowej.
+Gdy a=0, komunikat "To nie jest funkcja kwadratowa", komputer nic nie oblicza.
+Gdy a<>0
+1)Oblicz wierzcho³ek i wypisz go [pamiêtaj, ¿e jest to punkt], 
+2)podaj funkcjê kwadratow¹ w postaci kanonicznej.
+3)Oblicz x1,x2 lub x0 lub napisz brak miejsc zerowych.
+4)Podaj jeœli jest to mo¿liwe funkcjê kwadratow¹ w postaci iloczynowej [unikaj zapisow +-].
+5)Podaj przedzia³y gdzie funkcja roœnie gdzie maleje.
+
+
+Na ocene 6: narysuj uklad wspolrzednych i wykres funkcji, zaznacz na osiach jednostki.(wskazówka do oceny cel --> u¿yj  element canvans, instrukcja JS strona 132 )
