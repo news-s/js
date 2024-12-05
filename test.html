@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+        
+      function get_delta(a, b, c){
+        let delta = -(b * b) - (4 * a * c)
+        if delta
+        return 
+      }
+      
+      function w(a, b, c) {
+        let p = (-b / 2) * a;
+        let q = get_delta(a, b, c) / (4 * a);
+        return p, q;
+      }
+
+      function kanon(a, b, c) {
+        let w = w(a, b, c);
+        return `f(x)=${a}(x-${w[0]})^2+${w[1]}`
+      }
+
+      function x1(a, b, c){
+        let delta = get_delta(a, b, c)
+
+      }
+
+      function run() {
+            
+      }
+
+    </script>
+  </head>
+  <body>
+    
+    <p>podaj a:</p>
+    <input type="number" id="a" />
+    <p>podaj b:</p>
+    <input type="number" id="b" />
+    <p>podaj c:</p>
+    <input type="number" id="c" />
+
+    <button onclick="run()">debil</button>
+  </body>
+</html>
