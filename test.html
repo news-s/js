@@ -1,48 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script>
-        
-      function get_delta(a, b, c){
-        let delta = -(b * b) - (4 * a * c)
-        if delta
-        return 
+    <title>Sprawdzian</title>
+    <style>
+      body {
+        font-size: 2cm;
+        color: green;
       }
-      
-      function w(a, b, c) {
-        let p = (-b / 2) * a;
-        let q = get_delta(a, b, c) / (4 * a);
-        return p, q;
-      }
-
-      function kanon(a, b, c) {
-        let w = w(a, b, c);
-        return `f(x)=${a}(x-${w[0]})^2+${w[1]}`
-      }
-
-      function x1(a, b, c){
-        let delta = get_delta(a, b, c)
-
-      }
-
-      function run() {
-            
-      }
-
-    </script>
+    </style>
   </head>
   <body>
-    
-    <p>podaj a:</p>
-    <input type="number" id="a" />
-    <p>podaj b:</p>
-    <input type="number" id="b" />
-    <p>podaj c:</p>
-    <input type="number" id="c" />
+    <form id="quadratic-form">
+      <label for="a">a: </label><input type="number" id="a" /><br />
+      <label for="b">b: </label><input type="number" id="b" /><br />
+      <label for="c">c: </label><input type="number" id="c" /><br />
+      <button type="button" onclick="calculate()">Oblicz</button>
 
-    <button onclick="run()">debil</button>
+      <div id="output"></div>
+
+      <canvas id="graphCanvas" width="600" height="600"></canvas>
+    </form>
+
+    <script>
+      function format(value) {
+        if (value === 0) return "";
+        if (value === 1) return "";
+        if (value === -1) return "-";
+        return value;
+      }
+
+      function calculate() {
+        const a = parseFloat(document.getElementById("a").value);
+        const b = parseFloat(document.getElementById("b").value);
+        const c = parseFloat(document.getElementById("c").value);
+        const output = document.getElementById("output");
+
+        output.innerHTML = "";
+
+        if (a === 0) {
+          output.innerHTML = "To nie jest funkcja kwadratowa.";
+          return;
+        }
+
+        const p = -b / (2 * a);
+        const q = c - b ** 2 / (4 * a);
+        output.innerHTML += `<p>Wierzchołek: (${p.toFixed(2)}, ${q.toFixed(
+          2
+        )})</p>`;
+
+        const aFormatted = format(a);
+        const pFormatted =
+          p >= 0 ? `- ${p.toFixed(2)}` : `+ ${Math.abs(p).toFixed(2)}`;
+        const qFormatted =
+          q >= 0 ? `+ ${q.toFixed(2)}` : `- ${Math.abs(q).toFixed(2)}`;
+        output.innerHTML += `<p>Postać kanoniczna: y = ${aFormatted}(x ${pFormatted})^2 ${qFormatted}</p>`;
+
+        const delta = b ** 2 - 4 * a * c;
+        if (delta > 0) {
+          const x1 = (-b - Math.sqrt(delta)) / (2 * a);
+          const x2 = (-b + Math.sqrt(delta)) / (2 * a);
+          output.innerHTML += `<p>Miejsca zerowe: x1 = ${x1.toFixed(
+            2
+          )}, x2 = ${x2.toFixed(2)}</p>`;
+
+          const x1Formatted =
+            x1 >= 0 ? `- ${x1.toFixed(2)}` : `+ ${Math.abs(x1).toFixed(2)}`;
+          const x2Formatted =
+            x2 >= 0 ? `- ${x2.toFixed(2)}` : `+ ${Math.abs(x2).toFixed(2)}`;
+          output.innerHTML += `<p>Postać iloczynowa: y = ${aFormatted}(x ${x1Formatted})(x ${x2Formatted})</p>`;
+        } else if (delta === 0) {
+          const x0 = -b / (2 * a);
+          const x0Formatted =
+            x0 >= 0 ? `- ${x0.toFixed(2)}` : `+ ${Math.abs(x0).toFixed(2)}`;
+          output.innerHTML += `<p>Miejsce zerowe: x0 = ${x0.toFixed(2)}</p>`;
+
+          output.innerHTML += `<p>Postać iloczynowa: y = ${aFormatted}(x ${x0Formatted})^2</p>`;
+        } else {
+          output.innerHTML += `<p>Brak miejsc zerowych.</p>`;
+        }
+
+        const rosnaca =
+          a > 0 ? `(${p.toFixed(2)}, infinity)` : `(-infinity, ${p.toFixed(2)})`;
+        const malejaca =
+          a > 0 ? `(-infinity, ${p.toFixed(2)})` : `(${p.toFixed(2)}, infinity)`;
+        output.innerHTML += `<p>Funkcja rośnie w przedziale: ${rosnaca}</p>`;
+        output.innerHTML += `<p>Funkcja maleje w przedziale: ${malejaca}</p>`;
+
+        drawGraph(a, b, c);
+      }
+
+      function drawGraph(a, b, c) {
+        const canvas = document.getElementById("graphCanvas");
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        const width = canvas.width;
+        const height = canvas.height;
+        const scale = 30;
+
+        ctx.beginPath();
+        ctx.moveTo(width / 2, 0);
+        ctx.lineTo(width / 2, height);
+        ctx.moveTo(0, height / 2);
+        ctx.lineTo(width, height / 2);
+        ctx.strokeStyle = "black";
+        ctx.stroke();
+
+        for (let i = 0; i <= width; i += scale) {
+          ctx.moveTo(i, height / 2 - 5);
+          ctx.lineTo(i, height / 2 + 5);
+        }
+
+        for (let i = 0; i <= height; i += scale) {
+          ctx.moveTo(width / 2 - 5, i);
+          ctx.lineTo(width / 2 + 5, i);
+        }
+        ctx.stroke();
+
+        ctx.beginPath();
+        for (let x = -width / (2 * scale); x <= width / (2 * scale); x += 0.1) {
+          const y = a * Math.pow(x, 2) + b * x + c;
+          const canvasX = width / 2 + x * scale;
+          const canvasY = height / 2 - y * scale;
+
+          if (x === -width / (2 * scale)) {
+            ctx.moveTo(canvasX, canvasY);
+          } else {
+            ctx.lineTo(canvasX, canvasY);
+          }
+        }
+        ctx.strokeStyle = "red";
+        ctx.stroke();
+      }
+    </script>
   </body>
 </html>
